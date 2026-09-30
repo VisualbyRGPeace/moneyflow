@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>MoneyFlow</title><meta name="theme-color" content="#0f766e">
+<link rel="manifest" href="manifest.json"><link rel="icon" href="icon.svg"><link rel="apple-touch-icon" href="icon.svg">
+<link rel="stylesheet" href="style.css"></head>
+<body>
+<header><b class="logo">MoneyFlow</b>
+<nav id="nav"><button data-v="dash">🏠<span>Tổng quan</span></button><button data-v="tx">💸<span>Giao dịch</span></button><button class="fab" id="fab" aria-label="Thêm giao dịch">＋</button><button data-v="rep">📊<span>Báo cáo</span></button><button data-v="cal">📅<span>Lịch</span></button></nav>
+<button class="add" id="addBtn">+ Thêm giao dịch</button><button class="gear" data-v="set" aria-label="Cài đặt">⚙️</button></header>
+<main id="app"></main>
+<dialog id="dlg"></dialog>
+<script src="chart.umd.js"></script><script src="app.js"></script><script type="module" src="sync.js"></script>
+</body></html>
