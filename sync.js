@@ -29,8 +29,11 @@ function listen(s){let first=true;return fb.onSnapshot(fb.collection(db,'users',
 async function start(){while(!mfdb())await new Promise(r=>setTimeout(r,100));
  const prev=localStorage.getItem('mf_uid');if(prev&&prev!==user.uid){const L=await local('transactions');await apply('transactions',[],L.map(x=>x.id))}
  localStorage.setItem('mf_uid',user.uid);unsubs=[listen('transactions'),listen('categories')];mfSyncUI()}
-document.addEventListener('click',async e=>{const b=e.target.closest('[data-login],[data-logout]');if(!b||!fb)return;
- try{if('login' in b.dataset)await fb.signInWithPopup(auth,new fb.GoogleAuthProvider());else await fb.signOut(auth)}catch(x){alert('Không đăng nhập được: '+(x.code||x.message))}});
+let busy=false;
+document.addEventListener('click',async e=>{const b=e.target.closest('[data-login],[data-logout]');if(!b||!fb||busy)return;busy=true;b.disabled=true;
+ try{if('login' in b.dataset)await fb.signInWithPopup(auth,new fb.GoogleAuthProvider());else await fb.signOut(auth)}
+ catch(x){const c=x.code||'';if(c=='auth/popup-blocked')alert('Trình duyệt đã chặn cửa sổ đăng nhập. Hãy cho phép popup cho trang này rồi bấm lại.');else if(c!='auth/cancelled-popup-request'&&c!='auth/popup-closed-by-user')alert('Không đăng nhập được: '+(c||x.message))}
+ finally{busy=false;b.disabled=false}});
 if(ok){const B='https://www.gstatic.com/firebasejs/10.12.2/',[a,f,g]=await Promise.all([import(B+'firebase-app.js'),import(B+'firebase-firestore.js'),import(B+'firebase-auth.js')]);
  fb={...f,...g};const app=a.initializeApp(firebaseConfig);auth=g.getAuth(app);
  db=f.initializeFirestore(app,{localCache:f.persistentLocalCache({tabManager:f.persistentMultipleTabManager()})});
