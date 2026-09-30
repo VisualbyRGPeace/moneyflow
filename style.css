@@ -43,3 +43,9 @@ nav{position:static;border:0;padding:0;background:none;justify-content:center;ga
 .cal .ok{color:var(--ok);font-weight:700}.cal .bad{color:var(--bad);font-weight:700}.cal .today{border-color:var(--ink)}
 .ce .mo{flex:0 0 110px;min-width:0}.ce select.i{flex:0 0 120px;min-width:0}.fab svg{width:26px;height:26px}
 .ce input[type=date]{flex:1;min-width:0}.tdb{flex:none;border:1px solid var(--line);border-radius:10px;padding:0 14px}.tdb.on{background:var(--acc);color:var(--on);border-color:var(--acc)}
+.dp{position:relative;flex:1;display:flex;align-items:center;justify-content:center;min-height:44px;cursor:pointer;overflow:hidden;margin:0;color:var(--ink);font-size:15px}.dp input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;min-height:0;border:0;padding:0}.dp.on{color:var(--on)}
+*{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+input,select,textarea{font-size:16px}
+input:not([type]),input[type=text],input[type=number]{-webkit-appearance:none;appearance:none}
+.row button{min-width:34px;padding:0}
+@media(max-width:480px){main{padding:12px}h2{font-size:18px}.kpi b{font-size:17px}.row{gap:6px}.row .a{font-size:14px}.cv{height:300px}td,th{padding:8px 2px;font-size:13px}}
