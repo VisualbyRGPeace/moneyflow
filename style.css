@@ -42,3 +42,4 @@ nav{position:static;border:0;padding:0;background:none;justify-content:center;ga
 .row .ic{background:var(--line)}.its{display:grid;grid-template-columns:1fr auto;gap:0 12px;font-size:13px;color:var(--mut);margin-top:4px}
 .cal .ok{color:var(--ok);font-weight:700}.cal .bad{color:var(--bad);font-weight:700}.cal .today{border-color:var(--ink)}
 .ce .mo{flex:0 0 110px;min-width:0}.ce select.i{flex:0 0 120px;min-width:0}.fab svg{width:26px;height:26px}
+.ce input[type=date]{flex:1;min-width:0}.tdb{flex:none;border:1px solid var(--line);border-radius:10px;padding:0 14px}.tdb.on{background:var(--acc);color:var(--on);border-color:var(--acc)}
