@@ -2,7 +2,7 @@
 const firebaseConfig={apiKey:"AIzaSyAZLbkfXtBujPW8RM4OOS9XqwDffoYaRGU",authDomain:"moneyflow-33113.firebaseapp.com",projectId:"moneyflow-33113",appId:"1:215160257459:web:85f9d70d983b09f487a9c6"};
 const ok=!firebaseConfig.apiKey.startsWith('PASTE');
 const H=t=>String(t??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-let user=null,fb=null,db,auth,applying=false,unsubs=[],st='';const known={transactions:new Set(),categories:new Set()},SYNC={transactions:1,categories:1};
+let user=null,fb=null,db,auth,applying=false,unsubs=[],st='';const known={transactions:new Set(),categories:new Set(),journal:new Set()},SYNC={transactions:1,categories:1,journal:1};
 window.mfSyncUI=()=>{const e=document.getElementById('sync');if(!e)return;
 e.innerHTML='<h3 style="margin-top:0">Đồng bộ đám mây</h3>'+(!ok?'<p>Chưa cấu hình Firebase. Dữ liệu chỉ lưu trên thiết bị này.</p>':user?`<p>Đã đăng nhập: <b>${H(user.email)}</b><br><small>${st||'Dữ liệu tự đồng bộ giữa các thiết bị.'}</small></p><div class="btns"><button data-logout>Đăng xuất</button></div>`:`<p>Đăng nhập để lưu dữ liệu lên tài khoản Google của bạn và dùng trên nhiều thiết bị.</p><div class="btns"><button class="pri" data-login>Đăng nhập với Google</button></div>`)};
 const mfdb=()=>window.mfDB&&window.mfDB();
@@ -28,7 +28,7 @@ function listen(s){let first=true;return fb.onSnapshot(fb.collection(db,'users',
  if(puts.length||dels.length){await apply(s,puts,dels);refresh()}})}
 async function start(){while(!mfdb())await new Promise(r=>setTimeout(r,100));
  const prev=localStorage.getItem('mf_uid');if(prev&&prev!==user.uid){const L=await local('transactions');await apply('transactions',[],L.map(x=>x.id))}
- localStorage.setItem('mf_uid',user.uid);unsubs=[listen('transactions'),listen('categories')];mfSyncUI()}
+ localStorage.setItem('mf_uid',user.uid);unsubs=[listen('transactions'),listen('categories'),listen('journal')];mfSyncUI()}
 let busy=false;
 document.addEventListener('click',async e=>{const b=e.target.closest('[data-login],[data-logout]');if(!b||!fb||busy)return;busy=true;b.disabled=true;
  try{if('login' in b.dataset)await fb.signInWithPopup(auth,new fb.GoogleAuthProvider());else await fb.signOut(auth)}
