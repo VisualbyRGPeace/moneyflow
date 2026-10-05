@@ -84,3 +84,18 @@ dialog{margin:auto 0 0;width:100%;max-width:100%;border-radius:22px 22px 0 0;max
 @media(max-width:480px){h2{font-size:24px}}
 /* fix: backdrop-filter on header traps the fixed bottom nav inside it */
 @media(max-width:759px){header{-webkit-backdrop-filter:none;backdrop-filter:none;background:var(--card)}}
+/* ===== diary ===== */
+.jtop{display:flex;align-items:center;gap:8px}.jtop button{width:42px;min-height:42px;border-radius:50%;background:var(--bg);display:grid;place-items:center;flex:none}
+.jdate{position:relative;flex:1;text-align:center;cursor:pointer;line-height:1.3}.jdate b{display:block;font-size:20px;letter-spacing:-.01em}.jdate span{color:var(--mut);font-size:14px}
+.jdate input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;min-height:0;border:0;padding:0}
+.jsub{display:flex;justify-content:center;align-items:center;gap:10px;color:var(--mut);font-size:13px;margin:8px 0 14px;min-height:30px;flex-wrap:wrap}.jsub button{min-height:30px;padding:0 12px;border-radius:99px;background:var(--bg);font-size:13px}
+.jmood{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}.jmood button{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 2px;border-radius:14px;background:var(--bg);color:var(--mut);font-size:11px;min-height:66px}.jmood .on{background:var(--ink);color:var(--card)}
+#jx{min-height:180px;line-height:1.7;border:0;background:var(--bg);padding:14px;margin-top:12px;overflow:hidden;resize:none}
+.jfoot{display:flex;justify-content:space-between;color:var(--mut);font-size:12px;margin-top:8px}
+.jlw .tools{margin-bottom:10px}
+.jc{display:flex;gap:12px;align-items:flex-start;padding:12px 6px;border-radius:14px;cursor:pointer}.jc:hover,.jc.cur{background:var(--bg)}
+.jd{flex:none;width:44px;text-align:center;line-height:1.1}.jd b{font-size:22px;display:block}.jd small{color:var(--mut);font-size:11px}
+.jb{flex:1;min-width:0}.jh{display:flex;gap:8px;align-items:center;font-size:12px;color:var(--mut);margin-bottom:2px;flex-wrap:wrap}.jsp{background:var(--line);padding:1px 8px;border-radius:99px}
+.jt{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;white-space:pre-wrap;overflow-wrap:anywhere}
+.jgrid{display:grid;gap:14px}
+@media(min-width:900px){main.wide{max-width:1040px}.jgrid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}.jed{position:sticky;top:76px}}
