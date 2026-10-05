@@ -82,3 +82,5 @@ dialog input,dialog select{background:var(--bg);border-color:transparent}
 @media(max-width:759px){nav{background:color-mix(in srgb,var(--card) 82%,transparent);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}nav button.on span{font-weight:600}
 dialog{margin:auto 0 0;width:100%;max-width:100%;border-radius:22px 22px 0 0;max-height:92dvh;padding-bottom:calc(18px + env(safe-area-inset-bottom))}}
 @media(max-width:480px){h2{font-size:24px}}
+/* fix: backdrop-filter on header traps the fixed bottom nav inside it */
+@media(max-width:759px){header{-webkit-backdrop-filter:none;backdrop-filter:none;background:var(--card)}}
