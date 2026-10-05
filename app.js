@@ -1,4 +1,5 @@
 'use strict';
+Chart.defaults.font.family='system-ui,-apple-system,sans-serif';Chart.defaults.elements.bar.borderRadius=6;
 const $=s=>document.querySelector(s),app=$('#app'),dlg=$('#dlg');
 const fmt=n=>new Intl.NumberFormat('vi-VN').format(Math.round(n))+' ₫';
 const pc=n=>(isFinite(n)?n.toFixed(1).replace('.',','):'0')+'%';
@@ -47,7 +48,7 @@ const applyTheme=()=>{const d=S.theme=='dark'||(S.theme=='system'&&matchMedia('(
 matchMedia('(prefers-color-scheme:dark)').addEventListener('change',applyTheme);
 const saveS=()=>run('settings',s=>s.put({key:'theme',value:S.theme}));
 /* ---- ui helpers ---- */
-const kpis=s=>`<div class="kpis"><div class="kpi"><small>Thu nhập</small><b class="inc">${fmt(s.i)}</b></div><div class="kpi"><small>Chi tiêu</small><b class="exp">${fmt(s.e)}</b></div><div class="kpi"><small>Còn lại</small><b>${fmt(s.r)}</b></div><div class="kpi"><small>Tỷ lệ tiết kiệm</small><b>${pc(s.s)}</b></div></div>`;
+const kpis=s=>`<div class="hero"><small>Còn lại</small><b>${fmt(s.r)}</b><span class="pill">Tiết kiệm ${pc(s.s)}</span></div><div class="kpis"><div class="kpi"><small>Thu nhập</small><b class="inc">${fmt(s.i)}</b></div><div class="kpi"><small>Chi tiêu</small><b class="exp">${fmt(s.e)}</b></div></div>`;
 const txRow=t=>{const c=cat(t.categoryId);return`<div class="row"><div class="ic">${ico(c.icon,18)}</div><div class="m"><b>${esc(c.name)}</b><small>${dmy(t.date)}${t.note?' · '+esc(t.note):''}</small>${t.items&&t.items.length?'<div class="its">'+t.items.map(x=>`<span>${esc(x.name||'—')}</span><span>${fmt(x.amount||0)}</span>`).join('')+'</div>':''}</div><div class="a ${t.type=='income'?'inc':'exp'}">${t.type=='income'?'+':'-'}${fmt(t.amount)}</div><button data-e="${t.id}" aria-label="Sửa">${ico('edit',18)}</button><button data-d="${t.id}" aria-label="Xóa">${ico('trash',18)}</button></div>`};
 const empty=()=>`<div class="card empty"><b>Chưa có giao dịch</b><p>Hãy thêm giao dịch đầu tiên để bắt đầu theo dõi chi tiêu.</p><button data-add>+ Thêm giao dịch</button></div>`;
 const pn=l=>`<div class="pn"><button data-p="-1">←</button><b>${l}</b><button data-p="1">→</button></div>`;
